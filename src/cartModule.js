@@ -1,5 +1,5 @@
 /*
-* Class example
+* Module example
 * A very simple shopping cart model
 * */
 
@@ -21,7 +21,8 @@ const getTotal = (items) => {
 // ----------------------------------------------
 const matchesById = targetId => item => item.id === targetId;
 
-const addQuantityToExistingItem = (index, quantity, items) => {
+const addQuantityToExistingItem = (index, quantity, _items) => {
+  const items = [..._items];
   items[index].quantity += quantity;
   return items;
 };
@@ -47,18 +48,17 @@ export const addItemToCart = (item, cart) => {
   return {
     items,
     total
-  }
+  };
 };
 
-const getCart = _items => {
+const getCart = (_items) => {
   const items = [..._items];
   const total = getTotal(items);
 
   return {
     items,
-    total,
-  }
+    total
+  };
 };
 
 export default getCart;
-

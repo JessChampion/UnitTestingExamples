@@ -21,7 +21,8 @@ const getTotal = (items) => {
 // ----------------------------------------------
 const matchesById = targetId => item => item.id === targetId;
 
-const addQuantityToExistingItem = (index, quantity, items) => {
+const addQuantityToExistingItem = (index, quantity, _items) => {
+  const items = [..._items];
   items[index].quantity += quantity;
   return items;
 };
@@ -31,7 +32,7 @@ const addNewItem = (newItem, items) => {
   return items;
 };
 
-const addToItems= (newItem, items) => {
+const addToItems = (newItem, items) => {
   const index = items.findIndex(matchesById(newItem.id));
   if (index >= 0) {
     return addQuantityToExistingItem(index, newItem.quantity, items);
@@ -42,11 +43,11 @@ const addToItems= (newItem, items) => {
 // Public interface
 // ----------------------------------------------
 
-export default class Cart {
-  constructor(items = []) {
-    const _items = [...items];
-    this.items = _items;
-    this.total = getTotal(_items);
+class Cart {
+  constructor(_items = []) {
+    const items = [..._items];
+    this.items = items;
+    this.total = getTotal(items);
   }
 
   // add an item to the cart
@@ -56,3 +57,5 @@ export default class Cart {
     this.total = getTotal(this.items);
   }
 }
+
+export default Cart;
