@@ -2,7 +2,8 @@
 <html>
 
 <head>
-  <link data-require="jasmine@*" data-semver="2.4.1" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.css" />
+  <link data-require="jasmine@*" data-semver="2.4.1" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.css"/>
   <style>
     html {
       padding: 0 1rem;
@@ -120,12 +121,16 @@
     <div class="section-body" id="tests"></div>
   </div>
 </div>
-<script data-require="jasmine@*" data-semver="2.4.1" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.js"></script>
-<script data-require="jasmine@*" data-semver="2.4.1" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine-html.js"></script>
-<script data-require="jasmine@*" data-semver="2.4.1" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot.js"></script>
-<script src="cartClass.js"></script>
-<script src="cartClass.spec.js"></script>
+<script data-require="jasmine@*" data-semver="2.4.1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.js"></script>
+<script data-require="jasmine@*" data-semver="2.4.1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine-html.js"></script>
+<script data-require="jasmine@*" data-semver="2.4.1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot.js"></script>
+<script src="../src/cartModule.spec.js"></script>
 <script type="text/javascript">
+  import getCart from '../src/cartModule';
+
   // ----------------------------------------------
   // Demo Runner
   // pay no attention to the man behind the curtain
@@ -147,7 +152,7 @@
   };
 
   const runDemo = () => {
-    let cart = new Cart(initialItems);
+    let cart = getCart(initialItems);
     const initialCart = JSON.stringify(cart, null, 2);
     cart.addItem(demoItem);
 

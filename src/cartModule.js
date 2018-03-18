@@ -31,7 +31,7 @@ const addNewItem = (newItem, items) => {
   return items;
 };
 
-const addItem = (newItem, items) => {
+export const addToItems = (newItem, items) => {
   const index = items.findIndex(matchesById(newItem.id));
   if (index >= 0) {
     return addQuantityToExistingItem(index, newItem.quantity, items);
@@ -41,18 +41,24 @@ const addItem = (newItem, items) => {
 
 // Public interface
 // ----------------------------------------------
-
-class Cart {
-  constructor(items = []) {
-    const _items = [...items];
-    this.items = _items;
-    this.total = getTotal(_items);
+export const addItemToCart = (item, cart) => {
+  const items = addToItems(item, cart.items);
+  const total = getTotal(items);
+  return {
+    items,
+    total
   }
+};
 
-  // add an item to the cart
-  // ----------------------------------------------
-  addItem(newItem) {
-    this.items = addItem(newItem, this.items);
-    this.total = getTotal(this.items);
+const getCart = _items => {
+  const items = [..._items];
+  const total = getTotal(items);
+
+  return {
+    items,
+    total,
   }
-}
+};
+
+export default getCart;
+

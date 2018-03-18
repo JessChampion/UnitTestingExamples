@@ -1,3 +1,5 @@
+import Cart from './cartClass'
+
 const getTestCartWithItems = () => new Cart([{
   id: 1,
   price: 2,
